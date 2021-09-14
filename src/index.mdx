@@ -1,0 +1,40 @@
+import SecurityWidgetConfigurator from './SecurityWidgetConfigurator';
+
+# Hello! 👋
+
+This is a demo site for the Visualise your Protocol Security (VYPS) prototype.
+A brief rundown of how this site is laid out.
+
+The core of the app is the same between the full page solution and the widget.
+
+> **Interested developers:** See `SecurityRenderer.js` for the HOC information.
+
+The widget itself is the main driver of the _unique_ architecture of this application.
+Every part of the application is optimised to minimise the size of the output JS bundle and keep things blazing fast.
+Compiled CSS in JS, no router, minified animations.
+
+**To be even clearer** 
+We want to be performant and lean - at least on our partner's pages.
+
+The full page solution is designed to take the same schema as the VYPS widget so they can utilise the same endpoint.
+
+## View the demo
+
+### Partner widget
+> Set your desired configuration below and have a play!
+
+<SecurityWidgetConfigurator />
+
+### Full site
+[Click here to see the prototype](/)
+
+## 🚧 Bugs?
+- Did something break for you? 
+- Have any queries about how the code works?
+- Missing a killer feature?
+
+As this is a prototype we are yet to have a proper bug triage system in place.
+
+Send a direct message to
+
+`joshocalico#3000` (`Josh | Reputation`) on the Mycelium or Reputation Discord and I'll get back to you as soon as I can.
