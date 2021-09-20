@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Prism from 'prismjs';
 import CodeRenderer from './utils/CodeRenderer';
 import ColorButton from './utils/ColorButton';
