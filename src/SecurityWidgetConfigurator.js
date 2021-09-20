@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import Prism from 'prismjs';
-import SecurityWidget from './SecurityWidget';
 import CodeRenderer from './utils/CodeRenderer';
 import ColorButton from './utils/ColorButton';
 
@@ -23,21 +22,29 @@ return (
     variant="${widgetConf.variant}"
     color={"${widgetConf.color.hex}"}
     textColor={"${widgetConf.textColor.hex}"}
+    url="${widgetConf.url}"
 />`
 )}
 
-function SecurityWidgetConfigurator() {
+function SecurityWidgetConfigurator({onChange}) {
     
     const [widgetConf, setWidgetConf] = useState({
         left: false,
         variant: "system",
         color: { hex: "#00ccff" },
         textColor: { hex: "#ffffff" },
+        url: "https://reputation.link"
     })
+
+    const updateMutualState = (widgetConf) => {
+        onChange(widgetConf);
+        setWidgetConf(widgetConf);
+    }
 
     useEffect(() => {
         Prism.highlightAll();
     }, [widgetConf]);
+
 
     return <div className="rounded shadow-lg bg-blue-50 p-4">
         <div className="flex flex-wrap">
@@ -50,7 +57,7 @@ function SecurityWidgetConfigurator() {
                     value={widgetConf.left ? 'left' : 'right'} 
                     className={commonFormStyles.input} 
                     id="swc--position"
-                    onChange={({target: {value}}) => setWidgetConf({...widgetConf, left: value === 'left'})}
+                    onChange={({target: {value}}) => {updateMutualState({...widgetConf, left: value === 'left'})}}
                 >
                     <option value="left">Left</option>
                     <option value="right">Right (Default)</option>
@@ -64,7 +71,7 @@ function SecurityWidgetConfigurator() {
                     value={widgetConf.variant} 
                     id="swc--variant"
                     className={commonFormStyles.input} 
-                    onChange={({target: {value}}) => setWidgetConf({...widgetConf, variant: value})}
+                    onChange={({target: {value}}) => {updateMutualState({...widgetConf, variant: value})}}
                 >
                     <option value="light">Light</option>
                     <option value="dark">Dark</option>
@@ -82,7 +89,7 @@ function SecurityWidgetConfigurator() {
                 </label>
                 <ColorButton 
                     color={widgetConf.color} 
-                    onChange={color => setWidgetConf({...widgetConf, color})}
+                    onChange={color => {updateMutualState({...widgetConf, color})}}
                 />
             </div>
             <div className="w-1/2 px-3 mb-1">
@@ -91,14 +98,23 @@ function SecurityWidgetConfigurator() {
                 </label>
                 <ColorButton 
                     color={widgetConf.textColor} 
-                    onChange={color => setWidgetConf({...widgetConf, textColor: color})}
+                    onChange={color => {updateMutualState({...widgetConf, textColor: color})}}
+                />
+            </div>
+            <div className="w-full px-3 mb-1">
+                <label className={commonFormStyles.label}>
+                    URL
+                </label>
+                <input
+                    value={widgetConf.url}
+                    className={commonFormStyles.input} 
+                    onChange={e => {updateMutualState({...widgetConf, url: e.target.value})}}
                 />
             </div>
             <div className="w-full">
                 <CodeRenderer code={generateUsageString(widgetConf)} language="jsx" />
             </div>
         </div>
-        <SecurityWidget {...widgetConf} />
     </div>
 }
 
