@@ -11,7 +11,7 @@ import tinycolor from 'tinycolor2';
 
 // Closed state
 function CSecurityWidget({color, textColor, url}) {
-    const lighterColor = useMemo(() => tinycolor(color).lighten(10).toString(), [color]);
+    const lighterColor = useMemo(() => tinycolor(color).brighten(10).toString(), [color]);
     const hoverRef = useRef(null);
     const isHover = useHover(hoverRef)
     return (
@@ -64,7 +64,7 @@ function SecurityWidget({
     left = false,
     right = false,
     inset = [20, 20],
-    color = '#00bcd4',
+    color = '#3E58C9',
     textColor = "#ffffff",
     url = 'https://reputation.link',
 }) {

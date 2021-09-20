@@ -31,7 +31,7 @@ function SecurityWidgetConfigurator({onChange}) {
     const [widgetConf, setWidgetConf] = useState({
         left: false,
         variant: "system",
-        color: { hex: "#00ccff" },
+        color: { hex: "#3E58C9" },
         textColor: { hex: "#ffffff" },
         url: "https://reputation.link"
     })
