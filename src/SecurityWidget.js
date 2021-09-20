@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion'
 import React, { useState, useMemo, useRef } from 'react'
 import { useHover } from 'usehooks-ts'
-
 import { ReactComponent as ReputationLogo } from './ReputationDAO_Logo_VYPS.svg';
 import tinycolor from 'tinycolor2';
-
+import './SecurityWidget.css';
 
 
 // import SecurityRenderer from "./SecurityRenderer";
@@ -26,6 +25,7 @@ function CSecurityWidget({color, textColor, url}) {
             justifyContent: 'center',
             alignItems: 'center',
             boxShadow: '10px 10px 24px -10px rgba(0, 0, 0, 0.5)',
+            fontFamily: 'Noto Sans, sans-serif',
         }} layout>
             <motion.div style={{
                 backgroundColor: color,
@@ -39,7 +39,7 @@ function CSecurityWidget({color, textColor, url}) {
                 <ReputationLogo fill={textColor} width='40' />
             </motion.div>
             {isHover && 
-                <div className="pv-4 pr-4 pl-2">
+                <div style={{padding: '1rem 1rem 1rem 0.5rem'}}>
                     <p>
                         Secured by Chainlink
                     </p>
