@@ -68,6 +68,7 @@ function SecurityWidget({
     textColor = "#ffffff",
     url = 'https://reputation.link',
 }) {
+    // eslint-disable-next-line no-unused-vars
     const [isOpen, setIsOpen] = useState(false);
 
     const position = useMemo(() => {
