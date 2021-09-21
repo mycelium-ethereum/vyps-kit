@@ -1,3 +1,5 @@
+import './highlight.css';
+import './index.css';
 import React, { useEffect, useState } from 'react'
 import Content from './index.mdx'
 import Prism from 'prismjs';

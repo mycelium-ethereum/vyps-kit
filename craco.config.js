@@ -1,4 +1,5 @@
 const { loaderByName, addBeforeLoader } = require('@craco/craco');
+const path = require('path');
 
 module.exports = {
     style: {
@@ -11,6 +12,22 @@ module.exports = {
     },
     webpack: {
         configure: (webpackConfig) => {
+            if (process.env.REACT_APP_BUILD_LIBRARY) {
+                webpackConfig.entry = './src/manifest.js'
+                webpackConfig.output = {
+                    ...webpackConfig.output,
+                    path: path.resolve(process.cwd(), 'dist'),
+                    filename: 'lib.js',
+                }
+                webpackConfig.optimization = {
+                    runtimeChunk: false,
+                    splitChunks: {
+                    chunks(chunk) {
+                        return false
+                    },
+                    },
+                }
+            }
             webpackConfig.resolve.extensions.push('.mdx');
 
             const mdxLoader = {

@@ -2,7 +2,7 @@
   "name": "vyps-kit",
   "version": "0.1.0",
   "private": true,
-  "main": "src/manifest.js",
+  "main": "dist/lib.js",
   "dependencies": {
     "@compiled/react": "^0.6.13",
     "@craco/craco": "^6.2.0",
