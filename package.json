@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "main": "dist/lib.js",
+
+  "peerDependencies": {
+    "react": "^17.0.2"
+  },
+
   "dependencies": {
     "@compiled/react": "^0.6.13",
     "@craco/craco": "^6.2.0",
@@ -15,7 +20,6 @@
     "framer-motion": "^4.1.17",
     "prism-react-renderer": "^1.2.1",
     "prismjs": "^1.24.1",
-    "react": "^17.0.2",
     "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
@@ -53,6 +57,7 @@
     "@mdx-js/loader": "^1.6.22",
     "autoprefixer": "^9",
     "babel-loader": "8.1.0",
+    "peer-deps-externals-webpack-plugin": "^1.0.4",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }

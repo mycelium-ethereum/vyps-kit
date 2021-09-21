@@ -1,4 +1,5 @@
 const { loaderByName, addBeforeLoader } = require('@craco/craco');
+const PeerDepsExternalsPlugin = require('peer-deps-externals-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -28,6 +29,10 @@ module.exports = {
                     },
                     },
                 }
+                webpackConfig.plugins = [
+                    ...webpackConfig.plugins,
+                    new PeerDepsExternalsPlugin(),
+                ]
             }
             webpackConfig.resolve.extensions.push('.mdx');
 
