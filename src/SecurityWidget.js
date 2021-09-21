@@ -9,8 +9,8 @@ import './SecurityWidget.css';
 // import SecurityRenderer from "./SecurityRenderer";
 
 // Closed state
-function CSecurityWidget({color, textColor, url}) {
-    const lighterColor = useMemo(() => tinycolor(color).brighten(10).toString(), [color]);
+function CSecurityWidget({left, color, textColor, url}) {
+    const lighterColor = useMemo(() => tinycolor(color).brighten(10).setAlpha(0.5).toString(), [color]);
     const hoverRef = useRef(null);
     const isHover = useHover(hoverRef)
     return (
@@ -26,6 +26,8 @@ function CSecurityWidget({color, textColor, url}) {
             alignItems: 'center',
             boxShadow: '10px 10px 24px -10px rgba(0, 0, 0, 0.5)',
             fontFamily: 'Noto Sans, sans-serif',
+            textDecoration: 'none',
+
         }} layout>
             <motion.div style={{
                 backgroundColor: color,
@@ -39,7 +41,10 @@ function CSecurityWidget({color, textColor, url}) {
                 <ReputationLogo fill={textColor} width='40' />
             </motion.div>
             {isHover && 
-                <div style={{padding: '1rem 1rem 1rem 0.5rem'}}>
+                <div style={{
+                    textAlign: 'left',
+                    padding: '1rem 1rem 1rem 0.5rem'
+                }}>
                     <p>
                         Secured by Chainlink
                     </p>
@@ -91,7 +96,7 @@ function SecurityWidget({
             position: 'fixed',
             ...position
         }}>
-            {!isOpen && <CSecurityWidget color={color} textColor={textColor} url={url} />}
+            {!isOpen && <CSecurityWidget left={left} color={color} textColor={textColor} url={url} />}
             {isOpen && <OSecurityWidget />}
         </motion.div>
     )
