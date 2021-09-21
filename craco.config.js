@@ -18,6 +18,7 @@ module.exports = {
                     ...webpackConfig.output,
                     path: path.resolve(process.cwd(), 'dist'),
                     filename: 'lib.js',
+                    libraryTarget: 'umd',
                 }
                 webpackConfig.optimization = {
                     runtimeChunk: false,
