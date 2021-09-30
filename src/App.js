@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Content from './index.mdx'
 import Prism from 'prismjs';
 import SecurityWidget from './SecurityWidget';
+import PVECanvas from './fullPage/components/PVECanvas';
 
 
 
@@ -38,6 +39,7 @@ function App() {
                 </div>
             </div>
             <SecurityWidget {...widgetConf} />
+            <PVECanvas />
         </div>
     )
 }

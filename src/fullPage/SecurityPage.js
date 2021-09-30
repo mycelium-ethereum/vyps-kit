@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react';
+import PVECanvas from './components/PVECanvas';
 
 function reducer(state, action) {
     switch (action.type) {
@@ -8,10 +9,11 @@ function reducer(state, action) {
             return state;
     }
 }
+
 function SecurityPage() {
     return (
         <div>
-            
+            <PVECanvas />
         </div>
     )
 }
