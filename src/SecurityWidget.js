@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import React, { useState, useMemo, useRef } from 'react'
+import React, { useState, useMemo, useRef, useEffect } from 'react'
 import { useHover } from 'usehooks-ts'
 import { ReactComponent as ReputationLogo } from './ReputationDAO_Logo_VYPS.svg';
 import tinycolor from 'tinycolor2';
@@ -9,10 +9,20 @@ import './SecurityWidget.css';
 // import SecurityRenderer from "./SecurityRenderer";
 
 // Closed state
-function CSecurityWidget({left, color, textColor, url}) {
-    const lighterColor = useMemo(() => tinycolor(color).brighten(10).setAlpha(0.5).toString(), [color]);
+function CSecurityWidget({left, color, textColor, url, style, startOpen}) {
+    const lighterColor = useMemo(() => tinycolor(color).brighten(10).toString(), [color]);
     const hoverRef = useRef(null);
     const isHover = useHover(hoverRef)
+    const [isOpenTimeout, setIsOpenTimeout] = useState(!startOpen);
+
+    useEffect(() => {
+        if (startOpen) {
+            setTimeout(() => {
+                setIsOpenTimeout(true);
+            }, 600)
+        }
+    }, [startOpen])
+
     return (
         <motion.a href={url} ref={hoverRef} style={{
             backgroundColor: lighterColor,
@@ -27,7 +37,7 @@ function CSecurityWidget({left, color, textColor, url}) {
             boxShadow: '10px 10px 24px -10px rgba(0, 0, 0, 0.5)',
             fontFamily: 'Noto Sans, sans-serif',
             textDecoration: 'none',
-
+            ...style
         }} layout>
             <motion.div style={{
                 backgroundColor: color,
@@ -40,10 +50,13 @@ function CSecurityWidget({left, color, textColor, url}) {
             }} layout>
                 <ReputationLogo fill={textColor} width='40' />
             </motion.div>
-            {isHover && 
-                <div style={{
+            {(!isOpenTimeout || isHover) && 
+                <motion.div 
+                style={{
                     textAlign: 'left',
-                    padding: '1rem 1rem 1rem 0.5rem'
+                    padding: '1rem 1rem 1rem 0.5rem',
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
                 }}>
                     <p>
                         Secured by Chainlink
@@ -51,7 +64,7 @@ function CSecurityWidget({left, color, textColor, url}) {
                     <p>
                         See how &#10095;
                     </p>
-                </div>}
+                </motion.div>}
         </motion.a>
     )
 }
@@ -72,6 +85,7 @@ function SecurityWidget({
     color = '#3E58C9',
     textColor = "#ffffff",
     url = 'https://reputation.link',
+    startOpen = false,
 }) {
     // eslint-disable-next-line no-unused-vars
     const [isOpen, setIsOpen] = useState(false);
@@ -96,7 +110,7 @@ function SecurityWidget({
             position: 'fixed',
             ...position
         }}>
-            {!isOpen && <CSecurityWidget left={left} color={color} textColor={textColor} url={url} />}
+            {!isOpen && <CSecurityWidget left={left} color={color} textColor={textColor} url={url} startOpen={startOpen} />}
             {isOpen && <OSecurityWidget />}
         </motion.div>
     )

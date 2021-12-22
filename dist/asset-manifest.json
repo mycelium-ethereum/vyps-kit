@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.eda21c64.css",
+    "main.js": "/lib.js",
+    "main.css.map": "/static/css/main.eda21c64.css.map",
+    "main.js.map": "/lib.js.map",
+    "index.html": "/index.html",
+    "static/media/ReputationDAO_Logo_VYPS.595a402b.svg": "/static/media/ReputationDAO_Logo_VYPS.595a402b.svg"
+  },
+  "entrypoints": [
+    "static/css/main.eda21c64.css",
+    "lib.js"
+  ]
+}

@@ -1,15 +1,16 @@
 {
   "name": "@reputation.link/vyps-kit",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.0",
+  "private": false,
   "main": "dist/lib.js",
+  "types": "dist/lib.d.ts",
   "peerDependencies": {
     "react": "^17.0.2"
   },
   "dependencies": {},
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "REACT_APP_BUILD_LIBRARY=true craco build || true && npx -p typescript tsc src/manifest.js --skipLibCheck --moduleResolution node --jsx preserve --declaration --allowJs --emitDeclarationOnly --outFile 'dist/lib.d.ts'",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
@@ -32,20 +33,20 @@
     ]
   },
   "devDependencies": {
-    "@mdx-js/loader": "^1.6.22",
-    "autoprefixer": "^9",
-    "babel-loader": "8.1.0",
-    "peer-deps-externals-webpack-plugin": "^1.0.4",
-    "postcss": "^7",
     "@compiled/react": "^0.6.13",
     "@craco/craco": "^6.2.0",
+    "@mdx-js/loader": "^1.6.22",
     "@tailwindcss/forms": "^0.3.3",
     "@tailwindcss/typography": "^0.4.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "autoprefixer": "^9",
     "axios": "^0.21.4",
+    "babel-loader": "8.1.0",
     "framer-motion": "^4.1.17",
+    "peer-deps-externals-webpack-plugin": "^1.0.4",
+    "postcss": "^7",
     "prism-react-renderer": "^1.2.1",
     "prismjs": "^1.24.1",
     "react": "^17.0.2",
@@ -55,6 +56,7 @@
     "react-outside-click-handler": "^1.3.0",
     "react-scripts": "4.0.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+    "typescript": "^4.5.4",
     "usehooks-ts": "^1.0.1",
     "web-vitals": "^1.0.1"
   }
