@@ -10,7 +10,8 @@
   "dependencies": {},
   "scripts": {
     "start": "craco start",
-    "build": "REACT_APP_BUILD_LIBRARY=true craco build || true && npx -p typescript tsc src/manifest.js --skipLibCheck --moduleResolution node --jsx preserve --declaration --allowJs --emitDeclarationOnly --outDir 'dist/types'",
+    "build-lib": "REACT_APP_BUILD_LIBRARY=true craco build || true && npx -p typescript tsc src/manifest.js --skipLibCheck --moduleResolution node --jsx preserve --declaration --allowJs --emitDeclarationOnly --outDir 'dist/types'",
+    "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
