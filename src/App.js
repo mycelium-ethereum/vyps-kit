@@ -5,13 +5,22 @@ import Content from './index.mdx'
 import Prism from 'prismjs';
 import SecurityWidget from './SecurityWidget';
 
-
-
 function App() {
     useEffect(() => {
         Prism.highlightAll();
     }, []);
 
+    const [ number, setNumber ] = useState(1);
+    
+    useEffect(() => {
+        const inter = setInterval(() => {
+            setNumber(number + 1);
+        }, 1000);
+        return () => {
+            clearInterval(inter);
+        }
+    }, [ number, setNumber ]);
+    
     const [widgetConf, setWidgetConf] = useState({});
 
     const transformColor = (widgetConfig) => {
@@ -37,7 +46,7 @@ function App() {
                     </a>
                 </div>
             </div>
-            <SecurityWidget {...widgetConf} />
+            <SecurityWidget {...widgetConf} as="div" variant="sm" startOpen />
         </div>
     )
 }

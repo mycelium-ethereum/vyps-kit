@@ -1,4 +1,7 @@
 # VYPS Kit
+> **Documentation is a few versions behind!**
+> We should update this at some point.
+
 Contains our latest widget and demo source code. 
 
 ## How to use the widget

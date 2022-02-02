@@ -1,0 +1,8 @@
+build
+public
+src
+.babelrc
+.gitignore
+craco.config.js
+tailwind.config.js
+yarn.lock
